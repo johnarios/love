@@ -245,4 +245,87 @@ button {
     .success h1 { font-size: 50px; }
     .success h2 { font-size: 35px; }
     .success p { font-size: 20px; }
+
+    /* Update the Card to be fluid for all devices */
+.card {
+    width: 90%; /* Adapts to any screen size */
+    max-width: 450px; /* Caps out perfectly for Windows/Desktops */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+    border-left: 1px solid rgba(255, 255, 255, 0.6);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 
+        0 25px 45px rgba(0, 0, 0, 0.15),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
+    animation: popup 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Tablets & Phones)
+   ========================================= */
+
+/* iPads and Tablets (Landscape and Portrait) */
+@media (max-width: 1024px) {
+    .card {
+        padding: 35px;
+    }
+    h1 {
+        font-size: 38px;
+    }
+    .heart {
+        font-size: 50px;
+    }
+    .gif {
+        width: 200px;
+    }
+}
+
+/* Phones (Mobile Layout) */
+@media (max-width: 600px) {
+    .card {
+        width: 95%;
+        padding: 25px 15px;
+        border-radius: 20px;
+    }
+    
+    .gif {
+        width: 160px; /* Smaller image to save screen space */
+        margin: 15px 0;
+    }
+    
+    h1 {
+        font-size: 30px; /* Prevent text wrapping on small screens */
+    }
+    
+    .subtitle {
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .quote {
+        font-size: 16px;
+        min-height: 48px;
+        margin-bottom: 20px;
+    }
+    
+    .buttons {
+        gap: 15px; /* Tighter gap so buttons don't hit screen edges */
+    }
+    
+    button {
+        padding: 14px 24px;
+        font-size: 18px;
+    }
+    
+    /* Scale down success text for mobile */
+    .success h1 { font-size: 45px; }
+    .success h2 { font-size: 30px; }
+    .success p { font-size: 18px; }
+}
 }

@@ -88,4 +88,44 @@ yesBtn.addEventListener("click", () => {
 
         document.body.appendChild(heart);
     }
+
+    function moveButton() {
+    count++;
+
+    // Dynamically calculate screen size so it works perfectly on Phones, iPads, and Windows
+    // We calculate the maximum safe distance it can move from its original center position
+    const maxDistanceX = (window.innerWidth / 2) - (noBtn.offsetWidth / 2) - 30; // 30px safety padding
+    const maxDistanceY = (window.innerHeight / 2) - (noBtn.offsetHeight / 2) - 30;
+
+    // Generate a random position within the safe screen boundaries
+    const randomX = (Math.random() * maxDistanceX * 2) - maxDistanceX;
+    const randomY = (Math.random() * maxDistanceY * 2) - maxDistanceY;
+    
+    // Add a random rotation for a "frantic" feel
+    const randomRotate = (Math.random() * 30) - 15; 
+
+    yesScale += 0.2;
+    noScale -= 0.05;
+
+    if (noScale < 0.15) noScale = 0.15;
+
+    // Apply hardware-accelerated transforms securely inside the viewport boundaries
+    noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${noScale}) rotate(${randomRotate}deg)`;
+    yesBtn.style.transform = `scale(${yesScale})`;
+
+    message.innerHTML = quotes[Math.floor(Math.random() * quotes.length)];
+
+    if (count >= 8) {
+        yesBtn.style.position = "fixed";
+        yesBtn.style.left = "50%";
+        yesBtn.style.top = "50%";
+        
+        // Use a slightly smaller scale for phones so it doesn't overflow
+        const finalScale = window.innerWidth < 500 ? 2.5 : 4;
+        yesBtn.style.transform = `translate(-50%, -50%) scale(${finalScale})`;
+        
+        yesBtn.style.boxShadow = "0 0 50px 20px rgba(0, 255, 150, 0.6)";
+        yesBtn.style.zIndex = "999";
+    }
+}
 });
